@@ -22,7 +22,7 @@ def start(update: Update, context: CallbackContext):
    button1 = KeyboardButton(text='DOG')
    button2 = KeyboardButton(text="CAT")
 
-   reply_markup = ReplyKeyboardMarkup([[button1, button2]])
+   reply_markup = ReplyKeyboardMarkup([[button1, button2]], resize_keyboard=True)
 
    bot.sendMessage(chat_id, f'Hello, {first_name}', reply_markup=reply_markup)
 
