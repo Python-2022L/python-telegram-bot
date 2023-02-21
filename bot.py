@@ -10,7 +10,7 @@ import os
 
 TOKEN=os.environ["TOKEN"]
 
-def hello(update: Update, context: CallbackContext):
+def start(update: Update, context: CallbackContext):
    bot = context.bot
    chat_id = update.message.chat.id
    first_name = update.message.chat.first_name
@@ -22,9 +22,12 @@ def echo(update: Update, context:CallbackContext):
    text = update.message.text
    bot.sendMessage(chat_id, text)
 
+def video(update, context):
+   print("VIDEO")
+
 updater = Updater(token=TOKEN)
-updater.dispatcher.add_handler(CommandHandler("hello", hello))
-updater.dispatcher.add_handler(MessageHandler(Filters.text,echo))
+updater.dispatcher.add_handler(CommandHandler("start", start))
+updater.dispatcher.add_handler(MessageHandler(Filters.video, video))
 
 updater.start_polling()
 updater.idle()
